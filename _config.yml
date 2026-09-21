@@ -1,0 +1,12 @@
+title: Mitsu Project 2.0
+baseurl: "/Mitsu-Project2.0"
+url: "https://jira22.github.io"
+
+plugins:
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github
