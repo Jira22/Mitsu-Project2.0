@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mitsu Project 2.0</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --accent: #0f766e;
+      --border: #dfe7f2;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 32px 24px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      background: var(--accent);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .button:hover {
+      opacity: 0.96;
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Mitsu Project 2.0</h1>
+
+      <p>
+        This site is published through GitHub Pages.
+      </p>
+
+      <p>
+        The dashboard is generated as a static HTML file in this repository.
+      </p>
+
+      <p>
+        <a class="button" href="./dashboard_final.html">Open the dashboard</a>
+      </p>
+
+      <div class="note">
+        If the dashboard file does not exist yet, generate it from the Python pipeline and then commit it as <strong>dashboard_final.html</strong> in the repo root.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
