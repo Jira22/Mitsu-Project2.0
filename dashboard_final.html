@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demand Forecasting Console</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --panel: #ffffff;
+      --panel-soft: #eef4fb;
+      --text: #112233;
+      --muted: #53657a;
+      --accent: #c8102e;
+      --accent-2: #0f766e;
+      --good: #1e8e5a;
+      --warning: #e08e1d;
+      --border: #dfeaf3;
+      --shadow: 0 12px 28px rgba(17,34,51,.06);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 18px 64px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0;
+      letter-spacing: -0.04em;
+    }
+    .subtitle {
+      color: var(--muted);
+      margin-top: 6px;
+      font-size: 1rem;
+    }
+    .pill {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 14px;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.82rem;
+      box-shadow: var(--shadow);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow);
+    }
+    .label {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .value {
+      font-size: clamp(1.7rem, 2vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+    .meta {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 18px 14px;
+      box-shadow: var(--shadow);
+      margin-top: 18px;
+    }
+    .panel h2 {
+      margin: 0 0 16px;
+      font-size: 1.15rem;
+    }
+    .bars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      align-items: end;
+      min-height: 220px;
+    }
+    .bar-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      align-items: center;
+      height: 180px;
+      gap: 8px;
+    }
+    .bar {
+      width: 100%;
+      max-width: 70px;
+      min-height: 20px;
+      background: linear-gradient(180deg, var(--accent-2), var(--warning));
+      border-radius: 10px 10px 4px 4px;
+    }
+    .bar-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .bar-value {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .status {
+      border-left: 4px solid var(--good);
+      background: rgba(30, 142, 90, 0.08);
+      color: #0d5b39;
+      font-weight: 700;
+      padding: 12px 14px;
+      border-radius: 8px;
+      margin-top: 18px;
+    }
+    .alert {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border: 1px solid #f3d7a6;
+      background: #fff8e7;
+      color: #7a4b00;
+      border-radius: 10px;
+      font-size: 0.96rem;
+    }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div>
+        <h1 class="title">Mitsu Project 2.0</h1>
+        <div class="subtitle">Demand Forecasting Console</div>
+      </div>
+      <div class="pill">GitHub Pages</div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="label">Forecast Revenue</div>
+        <p class="value">₿ 3.1M</p>
+        <div class="meta">FY2025 forecast snapshot</div>
+      </div>
+      <div class="card">
+        <div class="label">Forecast Units</div>
+        <p class="value">82,400</p>
+        <div class="meta">Units across categories</div>
+      </div>
+      <div class="card">
+        <div class="label">Backtest WAPE</div>
+        <p class="value">14.3%</p>
+        <div class="meta">Revenue holdout error</div>
+      </div>
+      <div class="card">
+        <div class="label">Status</div>
+        <p class="value" style="color: var(--good);">Live</p>
+        <div class="meta">Static site is hosted</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Revenue by category (sample view)</h2>
+      <div class="bars" id="bars"></div>
+    </div>
+
+    <div class="status">Dashboard URL is working: the repo is serving a valid static page from GitHub Pages.</div>
+    <div class="alert">
+      This fallback dashboard loads without the generated forecast JSON. To replace the sample values with the real model output, run the Python pipeline and commit the generated <strong>dashboard_data.json</strong> and <strong>dashboard_final.html</strong> files to the repo root.
+    </div>
+  </div>
+
+  <script>
+    const data = [
+      { label: 'A', value: 72 },
+      { label: 'B', value: 58 },
+      { label: 'C', value: 46 },
+      { label: 'D', value: 34 },
+      { label: 'E', value: 26 }
+    ];
+
+    const max = Math.max(...data.map(d => d.value));
+    const bars = document.getElementById('bars');
+    bars.innerHTML = data.map(item => `
+      <div class="bar-wrap">
+        <div class="bar-value">${item.value}</div>
+        <div class="bar" style="height:${(item.value / max) * 100}%"></div>
+        <div class="bar-label">${item.label}</div>
+      </div>
+    `).join('');
+  </script>
+</body>
+</html>
